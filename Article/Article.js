@@ -89,7 +89,7 @@ const data = [
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
-  
+
   <div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
@@ -112,3 +112,55 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+// ARTICLE COMPONENT CREATOR
+function articlemaker(articleConfig) {
+
+  // CREATE DOM NODES
+  const article = document.createElement('div');
+  const title = document.createElement('h2');
+  const date = document.createElement('p');
+  const firstParagraph = document.createElement('p');
+  const secondParagraph = document.createElement('p');
+  const thirdParagraph = document.createElement('p');
+  const btn = document.createElement('span');
+
+  // ADD THE NECESSARY CLASSES
+  article.classList.add('article');
+  date.classList.add('date');
+  btn.classList.add('expandButton');
+
+  // ADD THE NECESSARY TEXT CONTENT
+  title.textContent = articleConfig.title;
+  date.textContent = articleConfig.date;
+  firstParagraph.textContent = articleConfig.firstParagraph;
+  secondParagraph.textContent = articleConfig.secondParagraph;
+  thirdParagraph.textContent = articleConfig.thirdParagraph;
+
+  // ATTACH CREATED NODES TO THE ARTICLE CONTAINER
+  article.appendChild(title);
+  article.appendChild(date);
+  article.appendChild(firstParagraph);
+  article.appendChild(secondParagraph);
+  article.appendChild(thirdParagraph);
+  article.appendChild(btn);
+
+  return article;
+}
+
+console.log(articlemaker({
+  title: 'Professional Software Development in 2019',
+  date: 'Jan 1st, 2019',
+  firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+    hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+    Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+  secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+    hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+    hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+    hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+  thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+    Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+    Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+}))
