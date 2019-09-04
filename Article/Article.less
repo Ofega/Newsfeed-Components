@@ -11,6 +11,11 @@
   height: 50px;
   overflow: hidden;
   box-shadow: 2px 2px 2px lightgrey;
+  transition: height .25s ease-out;
+
+  &.article-open {
+    height: 400px;
+  }
 
   h2 {
     font-size: 28px;
@@ -40,11 +45,6 @@
     background-color: white;
   }
 }
-
-.article-open {
-  height: 400px;
-}
-
 
 
 

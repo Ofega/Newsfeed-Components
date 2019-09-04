@@ -48,6 +48,10 @@
   height: 50px;
   overflow: hidden;
   box-shadow: 2px 2px 2px lightgrey;
+  transition: height 0.25s ease-out;
+}
+.article.article-open {
+  height: 400px;
 }
 .article h2 {
   font-size: 28px;
@@ -72,9 +76,6 @@
   cursor: pointer;
   transform: translate(-50%);
   background-color: white;
-}
-.article-open {
-  height: 400px;
 }
 .menu-button {
   position: absolute;
