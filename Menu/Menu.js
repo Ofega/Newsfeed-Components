@@ -1,35 +1,59 @@
-/* This is the data we will be using, study it but don't change anything, yet. */
+(function() {
+  // STATE DECLARATION
+  const state = {
+    isOpen: false,
+    menuItems: [
+      'Students',
+      'Faculty',
+      "What's New",
+      'Tech Trends',
+      'Music',
+      'Log Out'
+    ]
+  }
 
-let menuItems = [
-  'Students',
-  'Faculty',
-  "What's New",
-  'Tech Trends',
-  'Music',
-  'Log Out'
-];
+  // VARIABLE ASSIGNMENT TO DOM ELEMENT
+  const btn = document.querySelector('.menu-button');
 
-/* 
+  // MENU MAKER FUNCTION
+  function menuMaker(menuItems) {
 
-  Step 1: Write a function that will create a menu component as seen below:
+    // CREATE NEW NODES
+    const menu = document.createElement('div');
+    const menuList = document.createElement('ul');
 
-  <div class="menu">
-    <ul>
-      {each menu item as a list item}
-    </ul>
-  </div>
+    // CREATE NEW MENU ITEMS AND ATTACH TO MENULIST
+    menuItems.map(item => {
+      const menuItem = document.createElement('li');
+      menuItem.textContent = item;
+      menuList.appendChild(menuItem);
+    })
 
-  The function takes an array as its only argument.
+    // ADD NECESSARY CLASSES
+    menu.classList.add('menu');
 
-  Step 2: Inside this function, iterate over the array creating a list item <li> element for each item in the array. 
-  Add those items to the <ul>
+    // EVENT LISTENER
+    btn.addEventListener('click', () => {
+      event.stopPropagation();
+      if(!state.isOpen) {
+        state.isOpen = true;
+        menu.classList.toggle('menu--open');
+      } else {
+        state.isOpen = false;
+        menu.classList.toggle('menu--open');
+      }
+    });
 
-  Step 3: Using a DOM selector, select the menu button (the element with a class of 'menu-button') currently on the DOM.
+    document.body.addEventListener('click', () => {
+      if(state.isOpen) {
+        state.isOpen = false;
+        menu.classList.toggle('menu--open');
+      }
+    });
 
-  Step 4: add a click event listener to the menu button. When clicked it should toggle the class 'menu--open' on the menu (your div with a 'menu' class).
+    menu.appendChild(menuList);
+    return menu;
+  }
 
-  Step 5: return the menu component.
-
-  Step 6: add the menu component to the DOM.
-  
-*/
+  document.body.prepend(menuMaker(state.menuItems));
+})();
